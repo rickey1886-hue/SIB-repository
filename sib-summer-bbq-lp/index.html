@@ -1,0 +1,965 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>つながりで変わる夏。学生×経営者BBQ | SIB</title>
+    <meta
+      name="description"
+      content="SIB主催の夏イベント『つながりで変わる夏。学生×経営者BBQ』応募ページ。学生と経営者がBBQをしながらフラットに交流できるリアルイベントです。"
+    />
+    <style>
+      :root {
+        --blue: #0d8bdc;
+        --blue-dark: #075c9b;
+        --blue-soft: #e8f6ff;
+        --orange: #ff8a2a;
+        --orange-dark: #d95f00;
+        --orange-soft: #fff1e5;
+        --white: #ffffff;
+        --ink: #19324a;
+        --muted: #5d7183;
+        --line: rgba(13, 139, 220, 0.18);
+        --shadow: 0 18px 45px rgba(7, 92, 155, 0.14);
+        --radius: 24px;
+        --max-width: 1120px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "YuGothic", "Noto Sans JP", sans-serif;
+        line-height: 1.75;
+        background:
+          radial-gradient(circle at top left, rgba(255, 138, 42, 0.18), transparent 34rem),
+          linear-gradient(180deg, #f1fbff 0%, #ffffff 42%, #fff8f0 100%);
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .page {
+        overflow: hidden;
+      }
+
+      .section {
+        padding: 64px 20px;
+      }
+
+      .section--soft {
+        background: rgba(255, 255, 255, 0.72);
+      }
+
+      .container {
+        width: min(100%, var(--max-width));
+        margin: 0 auto;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin: 0 0 12px;
+        padding: 7px 13px;
+        border-radius: 999px;
+        color: var(--blue-dark);
+        font-size: 0.86rem;
+        font-weight: 700;
+        background: var(--blue-soft);
+      }
+
+      .eyebrow::before {
+        content: "";
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: var(--orange);
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
+      h1 {
+        margin-bottom: 18px;
+        font-size: clamp(2.45rem, 11vw, 5rem);
+        line-height: 1.08;
+        letter-spacing: -0.06em;
+      }
+
+      h2 {
+        margin-bottom: 18px;
+        font-size: clamp(1.85rem, 7vw, 3rem);
+        line-height: 1.2;
+        letter-spacing: -0.04em;
+      }
+
+      h3 {
+        margin-bottom: 10px;
+        font-size: 1.18rem;
+        line-height: 1.35;
+      }
+
+      .lead {
+        color: var(--muted);
+        font-size: 1.06rem;
+      }
+
+      .hero {
+        position: relative;
+        min-height: 100svh;
+        padding: 28px 20px 72px;
+      }
+
+      .hero::before,
+      .hero::after {
+        position: absolute;
+        content: "";
+        border-radius: 999px;
+        pointer-events: none;
+      }
+
+      .hero::before {
+        right: -105px;
+        top: 72px;
+        width: 245px;
+        height: 245px;
+        background: radial-gradient(circle, rgba(255, 138, 42, 0.9) 0 28%, rgba(255, 183, 77, 0.28) 29% 58%, transparent 59%);
+      }
+
+      .hero::after {
+        left: -80px;
+        bottom: 42px;
+        width: 190px;
+        height: 190px;
+        background: rgba(13, 139, 220, 0.12);
+      }
+
+      .hero__inner {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        gap: 32px;
+        align-items: center;
+        width: min(100%, var(--max-width));
+        min-height: calc(100svh - 100px);
+        margin: 0 auto;
+      }
+
+      .hero__copy {
+        padding-top: 40px;
+      }
+
+      .hero__subtitle {
+        max-width: 720px;
+        margin-bottom: 24px;
+        color: var(--muted);
+        font-size: 1.08rem;
+      }
+
+      .hero__meta {
+        display: grid;
+        gap: 12px;
+        margin: 0 0 28px;
+        padding: 0;
+        list-style: none;
+      }
+
+      .hero__meta li {
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+        padding: 14px 16px;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.78);
+        box-shadow: 0 8px 24px rgba(13, 139, 220, 0.08);
+      }
+
+      .meta-icon {
+        display: grid;
+        flex: 0 0 32px;
+        width: 32px;
+        height: 32px;
+        place-items: center;
+        border-radius: 12px;
+        background: var(--orange-soft);
+      }
+
+      .cta-row {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 54px;
+        padding: 14px 22px;
+        border: 0;
+        border-radius: 999px;
+        color: var(--white);
+        font: inherit;
+        font-weight: 800;
+        text-decoration: none;
+        background: linear-gradient(135deg, var(--orange), #ffb23f);
+        box-shadow: 0 14px 28px rgba(255, 138, 42, 0.28);
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .button:hover,
+      .button:focus-visible {
+        transform: translateY(-2px);
+        box-shadow: 0 18px 36px rgba(255, 138, 42, 0.34);
+      }
+
+      .button--secondary {
+        color: var(--blue-dark);
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.86);
+        box-shadow: none;
+      }
+
+      .hero-card {
+        position: relative;
+        padding: 24px;
+        border: 1px solid rgba(255, 255, 255, 0.72);
+        border-radius: 32px;
+        background: linear-gradient(160deg, rgba(255, 255, 255, 0.86), rgba(232, 246, 255, 0.72));
+        box-shadow: var(--shadow);
+      }
+
+      .hero-card__sky {
+        min-height: 300px;
+        border-radius: 26px;
+        background:
+          radial-gradient(circle at 20% 20%, #fff6b8 0 10%, transparent 11%),
+          linear-gradient(180deg, #78cdf5 0 46%, #ffffff 47% 50%, #12a1e6 51% 68%, #f2c077 69% 100%);
+        overflow: hidden;
+      }
+
+      .hero-card__wave {
+        width: 140%;
+        height: 84px;
+        margin: 132px 0 0 -20%;
+        border-radius: 50% 50% 0 0;
+        background: rgba(255, 255, 255, 0.64);
+      }
+
+      .hero-card__grill {
+        position: absolute;
+        right: 18px;
+        bottom: 28px;
+        width: min(58vw, 280px);
+        padding: 18px;
+        border-radius: 22px;
+        color: var(--white);
+        background: rgba(25, 50, 74, 0.86);
+        box-shadow: 0 18px 34px rgba(25, 50, 74, 0.28);
+      }
+
+      .hero-card__grill strong {
+        display: block;
+        margin-bottom: 5px;
+        font-size: 1.05rem;
+      }
+
+      .grid {
+        display: grid;
+        gap: 16px;
+      }
+
+      .grid--two,
+      .grid--three,
+      .grid--four {
+        grid-template-columns: 1fr;
+      }
+
+      .card {
+        padding: 22px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 12px 30px rgba(13, 139, 220, 0.08);
+      }
+
+      .card__icon {
+        display: grid;
+        width: 44px;
+        height: 44px;
+        margin-bottom: 14px;
+        place-items: center;
+        border-radius: 16px;
+        background: linear-gradient(135deg, var(--blue-soft), var(--orange-soft));
+        font-size: 1.35rem;
+      }
+
+      .list {
+        display: grid;
+        gap: 10px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .list li {
+        position: relative;
+        padding-left: 28px;
+      }
+
+      .list li::before {
+        position: absolute;
+        left: 0;
+        top: 0.55em;
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        background: var(--orange);
+        content: "";
+      }
+
+      .split-heading {
+        display: grid;
+        gap: 12px;
+        margin-bottom: 28px;
+      }
+
+      .timeline {
+        display: grid;
+        gap: 12px;
+        counter-reset: timeline;
+      }
+
+      .timeline__item {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 14px;
+        align-items: center;
+        padding: 16px;
+        border-radius: 20px;
+        background: var(--white);
+        box-shadow: 0 8px 24px rgba(13, 139, 220, 0.08);
+        counter-increment: timeline;
+      }
+
+      .timeline__item::before {
+        display: grid;
+        width: 38px;
+        height: 38px;
+        place-items: center;
+        border-radius: 14px;
+        color: var(--white);
+        font-weight: 800;
+        background: var(--blue);
+        content: counter(timeline, decimal-leading-zero);
+      }
+
+      .overview {
+        display: grid;
+        gap: 1px;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: var(--line);
+      }
+
+      .overview__row {
+        display: grid;
+        gap: 4px;
+        padding: 16px;
+        background: rgba(255, 255, 255, 0.94);
+      }
+
+      .overview__row dt {
+        color: var(--blue-dark);
+        font-weight: 800;
+      }
+
+      .overview__row dd {
+        margin: 0;
+      }
+
+      .notice {
+        margin-top: 18px;
+        padding: 16px 18px;
+        border-left: 5px solid var(--orange);
+        border-radius: 18px;
+        background: var(--orange-soft);
+        font-weight: 800;
+      }
+
+      .venue-card strong {
+        display: block;
+        margin-bottom: 8px;
+        color: var(--blue-dark);
+        font-size: 1.15rem;
+      }
+
+      .tag {
+        display: inline-flex;
+        margin-bottom: 12px;
+        padding: 5px 10px;
+        border-radius: 999px;
+        color: var(--orange-dark);
+        font-size: 0.82rem;
+        font-weight: 800;
+        background: var(--orange-soft);
+      }
+
+      .faq {
+        display: grid;
+        gap: 12px;
+      }
+
+      details {
+        padding: 18px;
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        background: var(--white);
+      }
+
+      summary {
+        font-weight: 800;
+        cursor: pointer;
+      }
+
+      details p {
+        margin: 12px 0 0;
+        color: var(--muted);
+      }
+
+      .form-wrap {
+        display: grid;
+        gap: 24px;
+      }
+
+      .form-card {
+        padding: 22px;
+        border-radius: 28px;
+        background: var(--white);
+        box-shadow: var(--shadow);
+      }
+
+      .form-grid {
+        display: grid;
+        gap: 18px;
+      }
+
+      .field {
+        display: grid;
+        gap: 7px;
+      }
+
+      fieldset {
+        margin: 0;
+        padding: 0;
+        border: 0;
+      }
+
+      label,
+      .field__label {
+        font-weight: 800;
+      }
+
+      .required {
+        margin-left: 6px;
+        color: var(--orange-dark);
+        font-size: 0.82rem;
+      }
+
+      input,
+      select,
+      textarea {
+        width: 100%;
+        min-height: 48px;
+        padding: 12px 14px;
+        border: 1px solid rgba(93, 113, 131, 0.28);
+        border-radius: 14px;
+        color: var(--ink);
+        font: inherit;
+        background: #fbfdff;
+      }
+
+      textarea {
+        min-height: 120px;
+        resize: vertical;
+      }
+
+      input:focus,
+      select:focus,
+      textarea:focus {
+        border-color: var(--blue);
+        outline: 3px solid rgba(13, 139, 220, 0.18);
+      }
+
+      .radio-group {
+        display: grid;
+        gap: 10px;
+      }
+
+      .radio-option,
+      .checkbox-option {
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+        padding: 12px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: #fbfdff;
+      }
+
+      .radio-option input,
+      .checkbox-option input {
+        width: auto;
+        min-height: auto;
+        margin-top: 7px;
+      }
+
+      .error {
+        min-height: 1.4em;
+        color: #b42318;
+        font-size: 0.88rem;
+      }
+
+      .success-message {
+        display: none;
+        margin-bottom: 18px;
+        padding: 16px;
+        border-radius: 18px;
+        color: #116329;
+        background: #e8f8ee;
+        font-weight: 800;
+      }
+
+      .success-message[aria-hidden="false"] {
+        display: block;
+      }
+
+      .footer {
+        padding: 32px 20px;
+        color: var(--muted);
+        text-align: center;
+        background: rgba(255, 255, 255, 0.72);
+      }
+
+      @media (min-width: 720px) {
+        .section {
+          padding: 88px 28px;
+        }
+
+        .hero {
+          padding-inline: 28px;
+        }
+
+        .hero__inner {
+          grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.85fr);
+        }
+
+        .hero__meta {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .cta-row {
+          flex-direction: row;
+          align-items: center;
+        }
+
+        .grid--two {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .grid--three {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .grid--four {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .split-heading {
+          grid-template-columns: 0.9fr 1.1fr;
+          align-items: end;
+        }
+
+        .overview__row {
+          grid-template-columns: 180px 1fr;
+          gap: 18px;
+        }
+
+        .form-card {
+          padding: 34px;
+        }
+
+        .form-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .field--full {
+          grid-column: 1 / -1;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .grid--four {
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero__inner">
+          <div class="hero__copy">
+            <p class="eyebrow">SIB Summer Event</p>
+            <h1 id="hero-title">つながりで変わる夏。</h1>
+            <p class="hero__subtitle">
+              学生と経営者が、BBQでつながる1日。堅い説明会ではなく、海の近くでBBQをしながら、学生と経営者がフラットに話せるリアル交流イベントです。
+            </p>
+            <ul class="hero__meta" aria-label="イベント概要">
+              <li><span class="meta-icon" aria-hidden="true">☀️</span><span><strong>開催予定時期</strong><br />夏開催予定</span></li>
+              <li><span class="meta-icon" aria-hidden="true">📍</span><span><strong>開催地候補</strong><br />藤沢・江の島または平塚周辺で調整中</span></li>
+            </ul>
+            <div class="cta-row">
+              <a class="button" href="#entry-form">応募フォームへ進む</a>
+              <a class="button button--secondary" href="#overview">開催概要を見る</a>
+            </div>
+          </div>
+          <div class="hero-card" aria-label="夏の海辺とBBQ交流をイメージした装飾">
+            <div class="hero-card__sky"><div class="hero-card__wave"></div></div>
+            <div class="hero-card__grill">
+              <strong>距離ゼロのリアル交流</strong>
+              食事をしながら、キャリア・起業・企業・働き方のリアルを自然に聞けます。
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="features-title">
+        <div class="container">
+          <div class="split-heading">
+            <div>
+              <p class="eyebrow">Features</p>
+              <h2 id="features-title">BBQだから、自然に話せる。</h2>
+            </div>
+            <p class="lead">講演会のような一方通行ではなく、同じテーブルを囲みながら学生と経営者がリラックスして交流できる場を目指します。</p>
+          </div>
+          <div class="grid grid--four">
+            <article class="card"><div class="card__icon" aria-hidden="true">🤝</div><h3>距離ゼロで話せる</h3><p>肩書きにとらわれず、近い距離で質問や相談ができます。</p></article>
+            <article class="card"><div class="card__icon" aria-hidden="true">🍖</div><h3>BBQだから自然に交流できる</h3><p>食事をきっかけに、初対面でも会話が生まれやすい雰囲気です。</p></article>
+            <article class="card"><div class="card__icon" aria-hidden="true">💡</div><h3>リアルを聞ける</h3><p>キャリア・起業・企業・働き方について、現場の声を直接聞けます。</p></article>
+            <article class="card"><div class="card__icon" aria-hidden="true">🌊</div><h3>学生同士もつながれる</h3><p>同じ関心を持つ学生と出会い、夏の新しいつながりを作れます。</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--soft" aria-labelledby="recommend-title">
+        <div class="container">
+          <p class="eyebrow">Recommended</p>
+          <h2 id="recommend-title">こんな人におすすめ</h2>
+          <div class="grid grid--two">
+            <article class="card">
+              <h3>学生向け</h3>
+              <ul class="list">
+                <li>経営者と話してみたい</li>
+                <li>将来の選択肢を広げたい</li>
+                <li>起業やビジネスに興味がある</li>
+                <li>普段出会えない人とつながりたい</li>
+                <li>夏に新しい経験をしたい</li>
+              </ul>
+            </article>
+            <article class="card">
+              <h3>経営者・社会人向け</h3>
+              <ul class="list">
+                <li>学生と直接話したい</li>
+                <li>若者の価値観を知りたい</li>
+                <li>採用や広報のヒントを得たい</li>
+                <li>次世代人材とつながりたい</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="benefits-title">
+        <div class="container">
+          <p class="eyebrow">Benefits</p>
+          <h2 id="benefits-title">参加メリット</h2>
+          <div class="grid grid--two">
+            <article class="card">
+              <div class="card__icon" aria-hidden="true">🎓</div>
+              <h3>学生メリット</h3>
+              <ul class="list">
+                <li>経営者とフラットに話せる</li>
+                <li>キャリアや働き方のリアルを知れる</li>
+                <li>人脈が広がる</li>
+                <li>同世代の学生とつながれる</li>
+                <li>夏の思い出になる</li>
+              </ul>
+            </article>
+            <article class="card">
+              <div class="card__icon" aria-hidden="true">🏢</div>
+              <h3>経営者メリット</h3>
+              <ul class="list">
+                <li>学生と直接接点を持てる</li>
+                <li>若者の視点を得られる</li>
+                <li>採用・広報・事業づくりのヒントになる</li>
+                <li>次世代人材との関係を作れる</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--soft" aria-labelledby="flow-title">
+        <div class="container">
+          <p class="eyebrow">Schedule</p>
+          <h2 id="flow-title">当日の流れ</h2>
+          <div class="timeline" aria-label="当日の流れ">
+            <div class="timeline__item"><strong>受付</strong></div>
+            <div class="timeline__item"><strong>アイスブレイク</strong></div>
+            <div class="timeline__item"><strong>BBQスタート</strong></div>
+            <div class="timeline__item"><strong>学生×経営者交流タイム</strong></div>
+            <div class="timeline__item"><strong>フリー交流</strong></div>
+            <div class="timeline__item"><strong>クロージング</strong></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="overview" aria-labelledby="overview-title">
+        <div class="container">
+          <p class="eyebrow">Overview</p>
+          <h2 id="overview-title">開催概要</h2>
+          <dl class="overview">
+            <div class="overview__row"><dt>イベント名</dt><dd>つながりで変わる夏。学生×経営者BBQ（仮）</dd></div>
+            <div class="overview__row"><dt>主催</dt><dd>SIB</dd></div>
+            <div class="overview__row"><dt>開催時期</dt><dd>夏開催予定</dd></div>
+            <div class="overview__row"><dt>開催地</dt><dd>藤沢・江の島または平塚周辺で調整中</dd></div>
+            <div class="overview__row"><dt>対象</dt><dd>大学生、高校生一部可、経営者、起業家、企業関係者</dd></div>
+            <div class="overview__row"><dt>参加費</dt><dd>未定</dd></div>
+            <div class="overview__row"><dt>定員</dt><dd>未定</dd></div>
+            <div class="overview__row"><dt>服装</dt><dd>自由</dd></div>
+            <div class="overview__row"><dt>備考</dt><dd>詳細は応募後に案内</dd></div>
+          </dl>
+          <p class="notice">開催日・参加費・定員は現在調整中です。確定次第、応募者へSIBよりご案内します。</p>
+        </div>
+      </section>
+
+      <section class="section section--soft" aria-labelledby="venues-title">
+        <div class="container">
+          <p class="eyebrow">Venue Candidates</p>
+          <h2 id="venues-title">開催地候補</h2>
+          <p class="lead">正式決定前のため、以下は候補地として掲載しています。</p>
+          <div class="grid grid--two">
+            <article class="card venue-card">
+              <span class="tag">候補地</span>
+              <strong>江の島湘南海岸BBQテラス</strong>
+              <p>藤沢・江の島エリア。片瀬江ノ島駅から徒歩約3分で、最大約100人規模に対応可能な候補地です。</p>
+            </article>
+            <article class="card venue-card">
+              <span class="tag">候補地</span>
+              <strong>グリルピアひらつかシーテラス</strong>
+              <p>平塚エリア。機材・備品・ゴミ回収込みのBBQ施設を候補地として調整中です。</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="faq-title">
+        <div class="container">
+          <p class="eyebrow">FAQ</p>
+          <h2 id="faq-title">よくある質問</h2>
+          <div class="faq">
+            <details><summary>Q. 1人でも参加できますか？</summary><p>A. はい、1人参加も歓迎です。交流しやすい雰囲気づくりを行います。</p></details>
+            <details><summary>Q. 高校生も参加できますか？</summary><p>A. 原則大学生中心ですが、希望があれば一部高校生も参加可能です。</p></details>
+            <details><summary>Q. 経営者と話すのが初めてでも大丈夫ですか？</summary><p>A. 問題ありません。堅い面談ではなく、BBQをしながら自然に話せる交流会です。</p></details>
+            <details><summary>Q. 参加費はかかりますか？</summary><p>A. 現在調整中です。確定次第、応募者に案内します。</p></details>
+            <details><summary>Q. 服装に指定はありますか？</summary><p>A. 指定はありません。BBQに参加しやすい服装でお越しください。</p></details>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--soft" id="entry-form" aria-labelledby="form-title">
+        <div class="container form-wrap">
+          <div>
+            <p class="eyebrow">Entry</p>
+            <h2 id="form-title">応募フォーム</h2>
+            <p class="lead">参加希望の方は、以下のフォームからお申し込みください。バックエンド連携は行わず、このページ上で入力確認と送信完了メッセージを表示します。</p>
+          </div>
+          <form class="form-card" id="bbqForm" novalidate>
+            <div class="success-message" id="successMessage" role="status" aria-live="polite" aria-hidden="true" tabindex="-1">
+              応募ありがとうございます。詳細が決まり次第、SIBよりご連絡します。
+            </div>
+            <div class="form-grid">
+              <div class="field">
+                <label for="name">氏名<span class="required">必須</span></label>
+                <input id="name" name="name" type="text" autocomplete="name" required aria-describedby="name-error" />
+                <span class="error" id="name-error"></span>
+              </div>
+              <div class="field">
+                <label for="kana">ふりがな<span class="required">必須</span></label>
+                <input id="kana" name="kana" type="text" required aria-describedby="kana-error" />
+                <span class="error" id="kana-error"></span>
+              </div>
+              <div class="field">
+                <label for="email">メールアドレス<span class="required">必須</span></label>
+                <input id="email" name="email" type="email" autocomplete="email" required aria-describedby="email-error" />
+                <span class="error" id="email-error"></span>
+              </div>
+              <div class="field">
+                <label for="tel">電話番号<span class="required">必須</span></label>
+                <input id="tel" name="tel" type="tel" autocomplete="tel" inputmode="tel" required aria-describedby="tel-error" />
+                <span class="error" id="tel-error"></span>
+              </div>
+              <div class="field">
+                <label for="attribute">属性<span class="required">必須</span></label>
+                <select id="attribute" name="attribute" required aria-describedby="attribute-error">
+                  <option value="">選択してください</option>
+                  <option>大学生</option>
+                  <option>高校生</option>
+                  <option>経営者</option>
+                  <option>起業家</option>
+                  <option>企業関係者</option>
+                  <option>その他</option>
+                </select>
+                <span class="error" id="attribute-error"></span>
+              </div>
+              <div class="field">
+                <label for="organization">学校名または会社名<span class="required">必須</span></label>
+                <input id="organization" name="organization" type="text" required aria-describedby="organization-error" />
+                <span class="error" id="organization-error"></span>
+              </div>
+              <div class="field">
+                <label for="position">学年または役職<span class="required">必須</span></label>
+                <input id="position" name="position" type="text" required aria-describedby="position-error" />
+                <span class="error" id="position-error"></span>
+              </div>
+              <fieldset class="field field--full">
+                <legend class="field__label">参加希望区分<span class="required">必須</span></legend>
+                <div class="radio-group" aria-describedby="entryType-error">
+                  <label class="radio-option"><input type="radio" name="entryType" value="学生として参加" required />学生として参加</label>
+                  <label class="radio-option"><input type="radio" name="entryType" value="経営者・社会人として参加" required />経営者・社会人として参加</label>
+                </div>
+                <span class="error" id="entryType-error"></span>
+              </fieldset>
+              <div class="field field--full">
+                <label for="purpose">参加目的<span class="required">必須</span></label>
+                <textarea id="purpose" name="purpose" required aria-describedby="purpose-error" placeholder="例：経営者の方にキャリア相談をしたい、学生と交流したい など"></textarea>
+                <span class="error" id="purpose-error"></span>
+              </div>
+              <div class="field field--full">
+                <label for="note">質問・備考</label>
+                <textarea id="note" name="note" aria-describedby="note-help" placeholder="事前に確認したいことがあればご記入ください"></textarea>
+                <span class="error" id="note-help"></span>
+              </div>
+              <div class="field field--full">
+                <label class="checkbox-option" for="consent">
+                  <input id="consent" name="consent" type="checkbox" required aria-describedby="consent-error" />
+                  <span>送信内容を確認し、SIBからの連絡を受け取ることに同意します<span class="required">必須</span></span>
+                </label>
+                <span class="error" id="consent-error"></span>
+              </div>
+              <div class="field field--full">
+                <button class="button" type="submit">参加希望を送信する</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">© SIB Summer BBQ Event</footer>
+
+    <script>
+      const formConfig = {
+        successMessage: "応募ありがとうございます。詳細が決まり次第、SIBよりご連絡します。",
+        fields: [
+          { name: "name", message: "氏名を入力してください。" },
+          { name: "kana", message: "ふりがなを入力してください。" },
+          { name: "email", message: "有効なメールアドレスを入力してください。", type: "email" },
+          { name: "tel", message: "電話番号を入力してください。" },
+          { name: "attribute", message: "属性を選択してください。" },
+          { name: "organization", message: "学校名または会社名を入力してください。" },
+          { name: "position", message: "学年または役職を入力してください。" },
+          { name: "entryType", message: "参加希望区分を選択してください。", type: "radio" },
+          { name: "purpose", message: "参加目的を入力してください。" },
+          { name: "consent", message: "同意チェックを入れてください。", type: "checkbox" },
+        ],
+      };
+
+      const form = document.getElementById("bbqForm");
+      const successMessage = document.getElementById("successMessage");
+
+      const setError = (name, message) => {
+        const error = document.getElementById(`${name}-error`);
+        if (error) {
+          error.textContent = message;
+        }
+      };
+
+      const clearErrors = () => {
+        formConfig.fields.forEach((field) => setError(field.name, ""));
+        form.querySelectorAll("[aria-invalid='true']").forEach((input) => input.removeAttribute("aria-invalid"));
+      };
+
+      const validateField = (field) => {
+        const controls = form.elements[field.name];
+        const control = controls instanceof RadioNodeList ? controls[0] : controls;
+        let isValid = true;
+
+        if (field.type === "radio") {
+          isValid = Array.from(controls).some((radio) => radio.checked);
+        } else if (field.type === "checkbox") {
+          isValid = control.checked;
+        } else if (field.type === "email") {
+          isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(control.value.trim());
+        } else {
+          isValid = Boolean(control.value.trim());
+        }
+
+        if (!isValid) {
+          setError(field.name, field.message);
+          if (control) {
+            control.setAttribute("aria-invalid", "true");
+          }
+        }
+
+        return isValid;
+      };
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        clearErrors();
+        successMessage.setAttribute("aria-hidden", "true");
+
+        const invalidField = formConfig.fields.find((field) => !validateField(field));
+        if (invalidField) {
+          const controls = form.elements[invalidField.name];
+          const firstControl = controls instanceof RadioNodeList ? controls[0] : controls;
+          firstControl?.focus();
+          return;
+        }
+
+        form.reset();
+        successMessage.textContent = formConfig.successMessage;
+        successMessage.setAttribute("aria-hidden", "false");
+        successMessage.focus?.();
+      });
+    </script>
+  </body>
+</html>
