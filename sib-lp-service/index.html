@@ -1,0 +1,964 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SIB LP Service | 伝わる1ページを、速く美しく。</title>
+    <meta
+      name="description"
+      content="SIBは、店舗・イベント・サービス向けに、スマホで見やすく問い合わせにつながるランディングページを制作します。"
+    />
+    <style>
+      :root {
+        --sib-lp-ink: #111113;
+        --sib-lp-ink-soft: #3d3d43;
+        --sib-lp-muted: #6f6f76;
+        --sib-lp-subtle: #f5f5f7;
+        --sib-lp-white: #ffffff;
+        --sib-lp-line: rgba(17, 17, 19, 0.1);
+        --sib-lp-line-strong: rgba(17, 17, 19, 0.16);
+        --sib-lp-accent: #0a84ff;
+        --sib-lp-accent-soft: rgba(10, 132, 255, 0.12);
+        --sib-lp-shadow: 0 24px 70px rgba(0, 0, 0, 0.08);
+        --sib-lp-shadow-soft: 0 16px 44px rgba(0, 0, 0, 0.06);
+        --sib-lp-radius: 28px;
+        --sib-lp-max: 1120px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        color: var(--sib-lp-ink);
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+        line-height: 1.7;
+        background: var(--sib-lp-white);
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+      }
+
+      body::before {
+        position: fixed;
+        inset: 0;
+        z-index: -2;
+        content: "";
+        background:
+          radial-gradient(circle at 50% 0%, rgba(10, 132, 255, 0.1), transparent 30rem),
+          linear-gradient(180deg, #ffffff 0%, #f7f7f8 42%, #ffffff 100%);
+      }
+
+      a {
+        color: inherit;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
+      .sib-lp-page {
+        overflow: hidden;
+      }
+
+      .sib-lp-container {
+        width: min(100% - 40px, var(--sib-lp-max));
+        margin: 0 auto;
+      }
+
+      .sib-lp-section {
+        padding: 92px 0;
+      }
+
+      .sib-lp-section--tight {
+        padding-top: 40px;
+      }
+
+      .sib-lp-section--soft {
+        background: rgba(245, 245, 247, 0.7);
+      }
+
+      .sib-lp-section__header {
+        max-width: 790px;
+        margin: 0 auto 42px;
+        text-align: center;
+      }
+
+      .sib-lp-section__header--left {
+        margin-right: 0;
+        margin-left: 0;
+        text-align: left;
+      }
+
+      .sib-lp-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        margin: 0 0 18px;
+        color: var(--sib-lp-muted);
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .sib-lp-eyebrow::before {
+        display: inline-block;
+        width: 7px;
+        height: 7px;
+        border-radius: 999px;
+        content: "";
+        background: var(--sib-lp-accent);
+        box-shadow: 0 0 0 7px var(--sib-lp-accent-soft);
+      }
+
+      .sib-lp-title {
+        margin-bottom: 20px;
+        font-size: clamp(2.65rem, 11vw, 6.6rem);
+        font-weight: 800;
+        line-height: 0.98;
+        letter-spacing: -0.075em;
+      }
+
+      .sib-lp-heading {
+        margin-bottom: 18px;
+        font-size: clamp(2rem, 7vw, 4.35rem);
+        font-weight: 800;
+        line-height: 1.06;
+        letter-spacing: -0.065em;
+      }
+
+      .sib-lp-heading--compact {
+        font-size: clamp(1.85rem, 6vw, 3.45rem);
+      }
+
+      .sib-lp-lead {
+        max-width: 760px;
+        margin-right: auto;
+        margin-bottom: 0;
+        margin-left: auto;
+        color: var(--sib-lp-ink-soft);
+        font-size: clamp(1.02rem, 2vw, 1.28rem);
+        letter-spacing: -0.02em;
+      }
+
+      .sib-lp-copy {
+        color: var(--sib-lp-muted);
+        font-size: 1rem;
+      }
+
+      .sib-lp-hero {
+        min-height: 100svh;
+        padding: 30px 0 90px;
+        text-align: center;
+      }
+
+      .sib-lp-nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: min(100% - 40px, 1180px);
+        margin: 0 auto;
+        padding: 14px 0;
+        color: rgba(17, 17, 19, 0.72);
+        font-size: 0.9rem;
+      }
+
+      .sib-lp-brand {
+        color: var(--sib-lp-ink);
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        text-decoration: none;
+      }
+
+      .sib-lp-nav__links {
+        display: none;
+        gap: 22px;
+        align-items: center;
+      }
+
+      .sib-lp-nav__links a {
+        text-decoration: none;
+        transition: color 180ms ease;
+      }
+
+      .sib-lp-nav__links a:hover {
+        color: var(--sib-lp-ink);
+      }
+
+      .sib-lp-hero__inner {
+        display: grid;
+        min-height: calc(100svh - 84px);
+        place-items: center;
+        padding: 64px 0 0;
+      }
+
+      .sib-lp-hero__content {
+        max-width: 1040px;
+      }
+
+      .sib-lp-hero__label {
+        margin-bottom: 24px;
+      }
+
+      .sib-lp-hero__meta {
+        margin: 24px auto 34px;
+        color: var(--sib-lp-muted);
+        font-size: clamp(0.98rem, 2vw, 1.12rem);
+      }
+
+      .sib-lp-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        align-items: stretch;
+        justify-content: center;
+        margin-top: 30px;
+      }
+
+      .sib-lp-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 52px;
+        padding: 14px 24px;
+        border: 1px solid var(--sib-lp-line-strong);
+        border-radius: 999px;
+        font: inherit;
+        font-weight: 700;
+        line-height: 1;
+        text-decoration: none;
+        transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, box-shadow 180ms ease;
+      }
+
+      .sib-lp-button:hover {
+        transform: translateY(-2px);
+      }
+
+      .sib-lp-button--primary {
+        border-color: #111113;
+        color: var(--sib-lp-white);
+        background: #111113;
+        box-shadow: 0 14px 34px rgba(0, 0, 0, 0.18);
+      }
+
+      .sib-lp-button--primary:hover {
+        background: #252529;
+      }
+
+      .sib-lp-button--secondary {
+        color: var(--sib-lp-ink);
+        background: rgba(255, 255, 255, 0.82);
+      }
+
+      .sib-lp-button--secondary:hover {
+        border-color: rgba(17, 17, 19, 0.28);
+        background: var(--sib-lp-white);
+      }
+
+      .sib-lp-hero__visual {
+        position: relative;
+        width: min(100%, 900px);
+        margin: 62px auto 0;
+        padding: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.78);
+        border-radius: 36px;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.82), rgba(245, 245, 247, 0.62));
+        box-shadow: var(--sib-lp-shadow);
+      }
+
+      .sib-lp-hero__screen {
+        min-height: 230px;
+        padding: 28px;
+        border: 1px solid var(--sib-lp-line);
+        border-radius: 28px;
+        background:
+          radial-gradient(circle at 20% 15%, rgba(10, 132, 255, 0.2), transparent 13rem),
+          linear-gradient(145deg, #fbfbfd 0%, #ececf0 100%);
+        text-align: left;
+      }
+
+      .sib-lp-screen-bar {
+        display: flex;
+        gap: 7px;
+        margin-bottom: 26px;
+      }
+
+      .sib-lp-screen-bar span {
+        width: 9px;
+        height: 9px;
+        border-radius: 999px;
+        background: rgba(17, 17, 19, 0.16);
+      }
+
+      .sib-lp-screen-copy {
+        max-width: 430px;
+      }
+
+      .sib-lp-screen-copy strong {
+        display: block;
+        margin-bottom: 12px;
+        font-size: clamp(1.65rem, 6vw, 3.8rem);
+        line-height: 1.02;
+        letter-spacing: -0.06em;
+      }
+
+      .sib-lp-screen-lines {
+        display: grid;
+        gap: 10px;
+        margin-top: 28px;
+      }
+
+      .sib-lp-screen-lines i {
+        display: block;
+        height: 10px;
+        border-radius: 999px;
+        background: rgba(17, 17, 19, 0.12);
+      }
+
+      .sib-lp-screen-lines i:nth-child(1) {
+        width: 82%;
+      }
+
+      .sib-lp-screen-lines i:nth-child(2) {
+        width: 62%;
+      }
+
+      .sib-lp-grid {
+        display: grid;
+        gap: 16px;
+      }
+
+      .sib-lp-grid--three,
+      .sib-lp-grid--two {
+        grid-template-columns: 1fr;
+      }
+
+      .sib-lp-card {
+        position: relative;
+        min-height: 158px;
+        padding: 26px;
+        border: 1px solid var(--sib-lp-line);
+        border-radius: var(--sib-lp-radius);
+        background: rgba(255, 255, 255, 0.78);
+        box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8) inset;
+        transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+      }
+
+      .sib-lp-card:hover {
+        border-color: rgba(17, 17, 19, 0.18);
+        transform: translateY(-4px);
+        box-shadow: var(--sib-lp-shadow-soft);
+      }
+
+      .sib-lp-card h3 {
+        margin-bottom: 10px;
+        font-size: 1.2rem;
+        letter-spacing: -0.03em;
+      }
+
+      .sib-lp-card p {
+        margin-bottom: 0;
+      }
+
+      .sib-lp-problem__text {
+        display: grid;
+        gap: 16px;
+        max-width: 760px;
+        margin: 0 auto 34px;
+        color: var(--sib-lp-ink-soft);
+        font-size: clamp(1.02rem, 2vw, 1.18rem);
+        text-align: center;
+      }
+
+      .sib-lp-split {
+        display: grid;
+        gap: 28px;
+        align-items: center;
+      }
+
+      .sib-lp-panel {
+        padding: 34px;
+        border: 1px solid var(--sib-lp-line);
+        border-radius: 34px;
+        background: #111113;
+        color: var(--sib-lp-white);
+        box-shadow: var(--sib-lp-shadow);
+      }
+
+      .sib-lp-panel p {
+        color: rgba(255, 255, 255, 0.68);
+      }
+
+      .sib-lp-panel__chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 24px;
+      }
+
+      .sib-lp-chip {
+        padding: 8px 12px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 999px;
+        color: rgba(255, 255, 255, 0.78);
+        font-size: 0.86rem;
+      }
+
+      .sib-lp-number {
+        display: inline-flex;
+        margin-bottom: 18px;
+        color: var(--sib-lp-accent);
+        font-weight: 800;
+        letter-spacing: -0.04em;
+      }
+
+      .sib-lp-price-card {
+        overflow: hidden;
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 0;
+      }
+
+      .sib-lp-price-card__top {
+        padding: 34px;
+        color: var(--sib-lp-white);
+        background:
+          radial-gradient(circle at 80% 0%, rgba(10, 132, 255, 0.38), transparent 20rem),
+          linear-gradient(145deg, #111113, #2c2c31);
+      }
+
+      .sib-lp-plan {
+        margin-bottom: 10px;
+        color: rgba(255, 255, 255, 0.62);
+        font-size: 0.84rem;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .sib-lp-price {
+        margin-bottom: 14px;
+        font-size: clamp(2.5rem, 12vw, 5.4rem);
+        font-weight: 850;
+        line-height: 1;
+        letter-spacing: -0.07em;
+      }
+
+      .sib-lp-price-card__body {
+        padding: 28px;
+      }
+
+      .sib-lp-list {
+        display: grid;
+        gap: 12px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .sib-lp-list li {
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+        color: var(--sib-lp-ink-soft);
+      }
+
+      .sib-lp-list li::before {
+        flex: 0 0 auto;
+        width: 7px;
+        height: 7px;
+        margin-top: 0.72em;
+        border-radius: 999px;
+        content: "";
+        background: var(--sib-lp-accent);
+      }
+
+      .sib-lp-process {
+        display: grid;
+        gap: 14px;
+      }
+
+      .sib-lp-step {
+        display: grid;
+        gap: 12px;
+        padding: 24px;
+        border: 1px solid var(--sib-lp-line);
+        border-radius: 24px;
+        background: rgba(255, 255, 255, 0.8);
+      }
+
+      .sib-lp-step__num {
+        color: var(--sib-lp-muted);
+        font-weight: 800;
+        letter-spacing: -0.04em;
+      }
+
+      .sib-lp-step h3 {
+        margin-bottom: 0;
+      }
+
+      .sib-lp-step p {
+        margin-bottom: 0;
+      }
+
+      .sib-lp-mock {
+        overflow: hidden;
+        padding: 16px;
+      }
+
+      .sib-lp-mock__window {
+        min-height: 290px;
+        padding: 18px;
+        border-radius: 22px;
+        background: linear-gradient(160deg, #f7f7f8, #e9e9ed);
+      }
+
+      .sib-lp-mock__hero {
+        min-height: 112px;
+        margin-bottom: 16px;
+        border-radius: 18px;
+        background:
+          radial-gradient(circle at 20% 25%, rgba(10, 132, 255, 0.28), transparent 8rem),
+          linear-gradient(135deg, #ffffff, #dfe0e5);
+      }
+
+      .sib-lp-mock__line {
+        display: block;
+        height: 9px;
+        margin-bottom: 10px;
+        border-radius: 999px;
+        background: rgba(17, 17, 19, 0.14);
+      }
+
+      .sib-lp-mock__line:nth-of-type(1) {
+        width: 76%;
+      }
+
+      .sib-lp-mock__line:nth-of-type(2) {
+        width: 52%;
+      }
+
+      .sib-lp-mock__tiles {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+        margin-top: 20px;
+      }
+
+      .sib-lp-mock__tiles span {
+        height: 48px;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.72);
+      }
+
+      .sib-lp-notes {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      .sib-lp-final {
+        padding: 96px 0;
+        text-align: center;
+      }
+
+      .sib-lp-final__box {
+        padding: 54px 24px;
+        border: 1px solid var(--sib-lp-line);
+        border-radius: 38px;
+        background:
+          radial-gradient(circle at 50% 0%, rgba(10, 132, 255, 0.12), transparent 24rem),
+          rgba(255, 255, 255, 0.84);
+        box-shadow: var(--sib-lp-shadow-soft);
+      }
+
+      .sib-lp-footer {
+        padding: 34px 0 42px;
+        border-top: 1px solid var(--sib-lp-line);
+        color: var(--sib-lp-muted);
+        font-size: 0.92rem;
+      }
+
+      .sib-lp-footer__inner {
+        display: grid;
+        gap: 18px;
+      }
+
+      .sib-lp-footer__links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px 20px;
+      }
+
+      .sib-lp-footer a {
+        text-decoration: none;
+      }
+
+      .sib-lp-footer a:hover {
+        color: var(--sib-lp-ink);
+      }
+
+      .sib-lp-reveal {
+        opacity: 0;
+        transform: translateY(24px);
+        transition: opacity 760ms cubic-bezier(0.22, 1, 0.36, 1), transform 760ms cubic-bezier(0.22, 1, 0.36, 1);
+        transition-delay: var(--sib-lp-reveal-delay, 0ms);
+        will-change: opacity, transform;
+      }
+
+      .sib-lp-reveal.is-sib-lp-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @media (min-width: 700px) {
+        .sib-lp-section {
+          padding: 118px 0;
+        }
+
+        .sib-lp-actions {
+          flex-direction: row;
+          align-items: center;
+        }
+
+        .sib-lp-button {
+          min-width: 174px;
+        }
+
+        .sib-lp-grid--two,
+        .sib-lp-grid--three {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .sib-lp-price-card__body {
+          padding: 34px;
+        }
+
+        .sib-lp-process {
+          gap: 0;
+        }
+
+        .sib-lp-step {
+          grid-template-columns: 86px 160px 1fr;
+          align-items: start;
+          border-radius: 0;
+          border-right: 0;
+          border-left: 0;
+          background: transparent;
+        }
+
+        .sib-lp-step + .sib-lp-step {
+          border-top: 0;
+        }
+      }
+
+      @media (min-width: 960px) {
+        .sib-lp-nav__links {
+          display: flex;
+        }
+
+        .sib-lp-hero__screen {
+          min-height: 330px;
+          padding: 42px;
+        }
+
+        .sib-lp-grid--three {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .sib-lp-split {
+          grid-template-columns: 1fr 0.9fr;
+          gap: 56px;
+        }
+
+        .sib-lp-footer__inner {
+          grid-template-columns: 1fr auto;
+          align-items: center;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.001ms !important;
+          animation-iteration-count: 1 !important;
+          scroll-behavior: auto !important;
+          transition-duration: 0.001ms !important;
+        }
+
+        .sib-lp-reveal {
+          opacity: 1;
+          transform: none;
+        }
+
+        .sib-lp-button:hover,
+        .sib-lp-card:hover {
+          transform: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="sib-lp-page">
+      <section class="sib-lp-hero sib-lp-reveal" aria-labelledby="hero-title">
+        <nav class="sib-lp-nav" aria-label="ページ内ナビゲーション">
+          <a class="sib-lp-brand" href="#hero-title">SIB</a>
+          <div class="sib-lp-nav__links" aria-label="主要リンク">
+            <a href="#service">Service</a>
+            <a href="#pricing">Price</a>
+            <a href="#process">Process</a>
+            <a href="#contact">Contact</a>
+          </div>
+        </nav>
+        <div class="sib-lp-container sib-lp-hero__inner">
+          <div class="sib-lp-hero__content">
+            <p class="sib-lp-eyebrow sib-lp-hero__label">For shops, events, and small businesses.</p>
+            <h1 class="sib-lp-title" id="hero-title">伝わる1ページを、速く、美しく。</h1>
+            <p class="sib-lp-lead">
+              SIBは、店舗・イベント・サービスの魅力を整理し、問い合わせにつながるランディングページを制作します。
+            </p>
+            <p class="sib-lp-hero__meta">税込55,000円。最短3日。無料修正2回。納品後2週間サポート付き。</p>
+            <div class="sib-lp-actions" aria-label="主な操作">
+              <a class="sib-lp-button sib-lp-button--primary" href="#contact">無料で相談する</a>
+              <a class="sib-lp-button sib-lp-button--secondary" href="#service">制作内容を見る</a>
+            </div>
+            <div class="sib-lp-hero__visual sib-lp-reveal" style="--sib-lp-reveal-delay: 140ms;" aria-label="LPプレビューの抽象モック">
+              <div class="sib-lp-hero__screen">
+                <div class="sib-lp-screen-bar" aria-hidden="true"><span></span><span></span><span></span></div>
+                <div class="sib-lp-screen-copy">
+                  <strong>One page. Clear value.</strong>
+                  <p class="sib-lp-copy">写真、強み、料金、導線。必要な情報を、静かに美しく整えます。</p>
+                  <div class="sib-lp-screen-lines" aria-hidden="true"><i></i><i></i></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sib-lp-section sib-lp-reveal" aria-labelledby="problem-title">
+        <div class="sib-lp-container">
+          <div class="sib-lp-section__header">
+            <h2 class="sib-lp-heading" id="problem-title">いい商品があるのに、伝わっていない。</h2>
+          </div>
+          <div class="sib-lp-problem__text">
+            <p>Instagramだけでは、サービスの魅力を整理して伝えきれない。</p>
+            <p>Google Mapだけでは、選ばれる理由まで届かない。</p>
+            <p>LPは、あなたの魅力を一目で伝えるための営業ページです。</p>
+          </div>
+          <div class="sib-lp-grid sib-lp-grid--three">
+            <article class="sib-lp-card sib-lp-reveal"><h3>情報が散らばっている</h3></article>
+            <article class="sib-lp-card sib-lp-reveal"><h3>予約や問い合わせにつながらない</h3></article>
+            <article class="sib-lp-card sib-lp-reveal"><h3>見た目で信頼感を出せていない</h3></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="sib-lp-section sib-lp-section--soft sib-lp-reveal" aria-labelledby="solution-title">
+        <div class="sib-lp-container sib-lp-split">
+          <div>
+            <p class="sib-lp-eyebrow">Solution</p>
+            <h2 class="sib-lp-heading sib-lp-heading--compact" id="solution-title">必要なのは、大きなサイトではありません。<br />選ばれるための、1ページです。</h2>
+            <p class="sib-lp-lead">SIBは、事業の強み・写真・料金・導線を整理し、問い合わせにつながるLPとして設計します。</p>
+          </div>
+          <aside class="sib-lp-panel sib-lp-reveal" aria-label="LPで整理する要素">
+            <h3>魅力を、順番に。</h3>
+            <p>はじめて見る人が迷わず理解し、次の行動へ進める構成に整えます。</p>
+            <div class="sib-lp-panel__chips">
+              <span class="sib-lp-chip">強み</span><span class="sib-lp-chip">写真</span><span class="sib-lp-chip">料金</span><span class="sib-lp-chip">導線</span>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="sib-lp-section sib-lp-reveal" id="service" aria-labelledby="service-title">
+        <div class="sib-lp-container">
+          <div class="sib-lp-section__header">
+            <h2 class="sib-lp-heading" id="service-title">シンプル。でも、伝わる。</h2>
+          </div>
+          <div class="sib-lp-grid sib-lp-grid--three">
+            <article class="sib-lp-card sib-lp-reveal"><h3>スマホで見やすい設計</h3><p class="sib-lp-copy">見る人の多いスマートフォンを基準に整えます。</p></article>
+            <article class="sib-lp-card sib-lp-reveal"><h3>店舗やサービスの魅力を整理</h3><p class="sib-lp-copy">選ばれる理由を、短く伝わる言葉にします。</p></article>
+            <article class="sib-lp-card sib-lp-reveal"><h3>問い合わせ導線を明確化</h3><p class="sib-lp-copy">迷わず相談できる流れを設計します。</p></article>
+            <article class="sib-lp-card sib-lp-reveal"><h3>写真・コピー・構成までサポート</h3><p class="sib-lp-copy">素材の見せ方から文章まで一緒に整えます。</p></article>
+            <article class="sib-lp-card sib-lp-reveal"><h3>イベント告知にも対応</h3><p class="sib-lp-copy">募集、概要、申し込みまでを1ページに。</p></article>
+            <article class="sib-lp-card sib-lp-reveal"><h3>公開後の改善も相談可能</h3><p class="sib-lp-copy">納品後も2週間、軽微な調整を支えます。</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="sib-lp-section sib-lp-section--soft sib-lp-reveal" aria-labelledby="usp-title">
+        <div class="sib-lp-container">
+          <div class="sib-lp-section__header">
+            <h2 class="sib-lp-heading" id="usp-title">クオリティ、金額、スピード。<br />すべてを、ちょうどよく。</h2>
+          </div>
+          <div class="sib-lp-grid sib-lp-grid--three">
+            <article class="sib-lp-card sib-lp-reveal"><span class="sib-lp-number">01</span><h3>クオリティ</h3><p class="sib-lp-copy">見た瞬間に、信頼されるデザイン。</p></article>
+            <article class="sib-lp-card sib-lp-reveal"><span class="sib-lp-number">02</span><h3>金額</h3><p class="sib-lp-copy">税込55,000円。始めやすい価格で。</p></article>
+            <article class="sib-lp-card sib-lp-reveal"><span class="sib-lp-number">03</span><h3>スピード</h3><p class="sib-lp-copy">最短3日。必要なタイミングに間に合わせる。</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="sib-lp-section sib-lp-reveal" id="pricing" aria-labelledby="pricing-title">
+        <div class="sib-lp-container">
+          <div class="sib-lp-section__header">
+            <h2 class="sib-lp-heading" id="pricing-title">まずは、小さく始められる価格で。</h2>
+          </div>
+          <article class="sib-lp-card sib-lp-price-card sib-lp-reveal">
+            <div class="sib-lp-price-card__top">
+              <p class="sib-lp-plan">One Page Plan</p>
+              <p class="sib-lp-price">税込55,000円</p>
+              <p>最短3日で初稿制作可能。通常は修正期間を含めて10〜14日で納品します。</p>
+            </div>
+            <div class="sib-lp-price-card__body">
+              <ul class="sib-lp-list">
+                <li>1ページLP制作</li>
+                <li>スマホ対応</li>
+                <li>構成設計</li>
+                <li>コピー作成</li>
+                <li>問い合わせ導線設計</li>
+                <li>無料修正2回</li>
+                <li>納品後2週間サポート</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="sib-lp-section sib-lp-section--soft sib-lp-reveal" aria-labelledby="cases-title">
+        <div class="sib-lp-container">
+          <div class="sib-lp-section__header">
+            <h2 class="sib-lp-heading" id="cases-title">こんな場面に。</h2>
+          </div>
+          <div class="sib-lp-grid sib-lp-grid--three">
+            <article class="sib-lp-card sib-lp-reveal"><h3>飲食店の新規集客</h3></article>
+            <article class="sib-lp-card sib-lp-reveal"><h3>美容室・サロンのサービス紹介</h3></article>
+            <article class="sib-lp-card sib-lp-reveal"><h3>小売店の商品紹介</h3></article>
+            <article class="sib-lp-card sib-lp-reveal"><h3>イベント・交流会の募集ページ</h3></article>
+            <article class="sib-lp-card sib-lp-reveal"><h3>個人事業主のサービスページ</h3></article>
+            <article class="sib-lp-card sib-lp-reveal"><h3>キャンペーン告知</h3></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="sib-lp-section sib-lp-reveal" id="process" aria-labelledby="process-title">
+        <div class="sib-lp-container">
+          <div class="sib-lp-section__header sib-lp-section__header--left">
+            <h2 class="sib-lp-heading" id="process-title">制作は、わかりやすく。</h2>
+          </div>
+          <div class="sib-lp-process">
+            <article class="sib-lp-step sib-lp-reveal"><span class="sib-lp-step__num">01</span><h3>問い合わせ</h3><p class="sib-lp-copy">目的・業種・希望納期を確認します。</p></article>
+            <article class="sib-lp-step sib-lp-reveal"><span class="sib-lp-step__num">02</span><h3>ヒアリング</h3><p class="sib-lp-copy">サービス内容、写真、料金、強みを整理します。</p></article>
+            <article class="sib-lp-step sib-lp-reveal"><span class="sib-lp-step__num">03</span><h3>制作</h3><p class="sib-lp-copy">構成・コピー・デザインをまとめて制作します。</p></article>
+            <article class="sib-lp-step sib-lp-reveal"><span class="sib-lp-step__num">04</span><h3>修正</h3><p class="sib-lp-copy">無料修正2回まで対応します。</p></article>
+            <article class="sib-lp-step sib-lp-reveal"><span class="sib-lp-step__num">05</span><h3>納品</h3><p class="sib-lp-copy">公開後2週間、軽微な修正や表示確認をサポートします。</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="sib-lp-section sib-lp-section--soft sib-lp-reveal" aria-labelledby="mock-title">
+        <div class="sib-lp-container">
+          <div class="sib-lp-section__header">
+            <h2 class="sib-lp-heading" id="mock-title">見た瞬間に、伝わるページへ。</h2>
+            <p class="sib-lp-lead">店舗の雰囲気、サービスの価値、申し込みまでの流れ。すべてを1ページに整理します。</p>
+          </div>
+          <div class="sib-lp-grid sib-lp-grid--three">
+            <article class="sib-lp-card sib-lp-mock sib-lp-reveal" aria-label="Cafe Landing Pageの架空プレビュー">
+              <div class="sib-lp-mock__window"><div class="sib-lp-mock__hero"></div><h3>Cafe Landing Page</h3><span class="sib-lp-mock__line"></span><span class="sib-lp-mock__line"></span><div class="sib-lp-mock__tiles"><span></span><span></span><span></span></div></div>
+            </article>
+            <article class="sib-lp-card sib-lp-mock sib-lp-reveal" aria-label="Event Landing Pageの架空プレビュー">
+              <div class="sib-lp-mock__window"><div class="sib-lp-mock__hero"></div><h3>Event Landing Page</h3><span class="sib-lp-mock__line"></span><span class="sib-lp-mock__line"></span><div class="sib-lp-mock__tiles"><span></span><span></span><span></span></div></div>
+            </article>
+            <article class="sib-lp-card sib-lp-mock sib-lp-reveal" aria-label="Salon Landing Pageの架空プレビュー">
+              <div class="sib-lp-mock__window"><div class="sib-lp-mock__hero"></div><h3>Salon Landing Page</h3><span class="sib-lp-mock__line"></span><span class="sib-lp-mock__line"></span><div class="sib-lp-mock__tiles"><span></span><span></span><span></span></div></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="sib-lp-section sib-lp-reveal" aria-labelledby="notes-title">
+        <div class="sib-lp-container sib-lp-notes">
+          <div class="sib-lp-section__header">
+            <h2 class="sib-lp-heading sib-lp-heading--compact" id="notes-title">ご依頼前にご確認ください。</h2>
+          </div>
+          <ul class="sib-lp-list">
+            <li>最短3日納品は、素材が揃っている場合のみ対応可能です。</li>
+            <li>無料修正は2回までです。</li>
+            <li>大幅な構成変更は追加費用となる場合があります。</li>
+            <li>予約システム、決済機能、複雑なアニメーションは別途相談となります。</li>
+            <li>写真、ロゴ、文章素材は原則お客様提供となります。</li>
+            <li>1日あたりの対応は限定3社までです。</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="sib-lp-final sib-lp-reveal" id="contact" aria-labelledby="contact-title">
+        <div class="sib-lp-container">
+          <div class="sib-lp-final__box">
+            <h2 class="sib-lp-heading" id="contact-title">あなたのサービスを、もっと伝わる形に。</h2>
+            <p class="sib-lp-lead">まずは無料でご相談ください。<br />今あるInstagram、Google Map、写真だけでも、LPの方向性を一緒に整理できます。</p>
+            <div class="sib-lp-actions">
+              <a class="sib-lp-button sib-lp-button--primary" href="#contact">無料で相談する</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="sib-lp-footer">
+      <div class="sib-lp-container sib-lp-footer__inner">
+        <div><strong>SIB</strong><br />Landing Page Service</div>
+        <nav class="sib-lp-footer__links" aria-label="フッターリンク">
+          <a href="#contact">Contact</a>
+          <a href="#contact">Instagram</a>
+          <a href="#service">Works</a>
+        </nav>
+      </div>
+    </footer>
+
+    <script>
+      (() => {
+        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        const revealItems = Array.from(document.querySelectorAll(".sib-lp-reveal"));
+
+        revealItems.forEach((item, index) => {
+          if (!item.style.getPropertyValue("--sib-lp-reveal-delay")) {
+            item.style.setProperty("--sib-lp-reveal-delay", `${Math.min(index % 6, 5) * 70}ms`);
+          }
+        });
+
+        if (reduceMotion || !("IntersectionObserver" in window)) {
+          revealItems.forEach((item) => item.classList.add("is-sib-lp-visible"));
+          return;
+        }
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-sib-lp-visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { root: null, rootMargin: "0px 0px -12%", threshold: 0.12 }
+        );
+
+        revealItems.forEach((item) => observer.observe(item));
+      })();
+    </script>
+  </body>
+</html>
