@@ -18,8 +18,10 @@
         --sib-lp-line: rgba(17, 17, 19, 0.1);
         --sib-lp-line-strong: rgba(17, 17, 19, 0.16);
         --sib-lp-orange: #ff7a1a;
+        --sib-lp-orange-warm: #ff8c42;
         --sib-lp-orange-soft: rgba(255, 122, 26, 0.12);
         --sib-lp-orange-mid: rgba(255, 122, 26, 0.28);
+        --sib-lp-orange-glow: rgba(255, 140, 66, 0.18);
         --sib-lp-accent: var(--sib-lp-orange);
         --sib-lp-accent-soft: var(--sib-lp-orange-soft);
         --sib-lp-shadow: 0 24px 70px rgba(0, 0, 0, 0.08);
@@ -86,6 +88,12 @@
 
       .sib-lp-section--soft {
         background: rgba(245, 245, 247, 0.7);
+      }
+
+      .sib-lp-section--stage {
+        position: relative;
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(245, 245, 247, 0.72) 38%, rgba(255, 255, 255, 0) 100%);
       }
 
       .sib-lp-section__header {
@@ -238,11 +246,11 @@
         font-weight: 700;
         line-height: 1;
         text-decoration: none;
-        transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, box-shadow 180ms ease;
+        transition: transform 360ms cubic-bezier(0.22, 1, 0.36, 1), border-color 240ms ease, background 240ms ease, box-shadow 240ms ease;
       }
 
       .sib-lp-button:hover {
-        transform: translateY(-2px);
+        transform: translateY(-3px) scale(1.01);
       }
 
       .sib-lp-button--primary {
@@ -271,22 +279,35 @@
 
       .sib-lp-hero__visual {
         position: relative;
-        width: min(100%, 900px);
-        margin: 62px auto 0;
+        width: min(100%, 980px);
+        margin: 72px auto 0;
         padding: 10px;
         border: 1px solid rgba(255, 255, 255, 0.78);
-        border-radius: 36px;
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.82), rgba(245, 245, 247, 0.62));
+        border-radius: 38px;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.86), rgba(245, 245, 247, 0.64));
         box-shadow: var(--sib-lp-shadow);
       }
 
+      .sib-lp-hero__visual::before {
+        position: absolute;
+        inset: -18% 8% auto;
+        height: 42%;
+        border-radius: 999px;
+        content: "";
+        background: radial-gradient(circle, rgba(255, 140, 66, 0.18), transparent 68%);
+        filter: blur(22px);
+        pointer-events: none;
+      }
+
       .sib-lp-hero__screen {
-        min-height: 230px;
+        position: relative;
+        overflow: hidden;
+        min-height: 410px;
         padding: 28px;
         border: 1px solid var(--sib-lp-line);
-        border-radius: 28px;
+        border-radius: 30px;
         background:
-          radial-gradient(circle at 22% 16%, rgba(255, 122, 26, 0.16), transparent 13rem),
+          radial-gradient(circle at 22% 16%, rgba(255, 122, 26, 0.13), transparent 13rem),
           linear-gradient(145deg, #fbfbfd 0%, #ececf0 100%);
         text-align: left;
       }
@@ -338,6 +359,49 @@
         width: 62%;
       }
 
+      .sib-lp-hero-device {
+        position: absolute;
+        right: 26px;
+        bottom: 24px;
+        width: min(42vw, 350px);
+        min-width: 214px;
+        padding: 10px;
+        border: 1px solid rgba(17, 17, 19, 0.08);
+        border-radius: 30px;
+        background: rgba(255, 255, 255, 0.72);
+        box-shadow: 0 22px 62px rgba(0, 0, 0, 0.14);
+        transform: translate3d(0, var(--sib-lp-depth-shift, 0px), 0);
+        transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      .sib-lp-hero-device img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        border-radius: 23px;
+        object-fit: cover;
+      }
+
+      .sib-lp-hero-device__caption {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        padding: 12px 8px 4px;
+        color: var(--sib-lp-muted);
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+
+      .sib-lp-hero-device__caption::before {
+        width: 7px;
+        height: 7px;
+        border-radius: 999px;
+        content: "";
+        background: var(--sib-lp-orange-warm);
+      }
+
+
       .sib-lp-grid {
         display: grid;
         gap: 16px;
@@ -356,12 +420,12 @@
         border-radius: var(--sib-lp-radius);
         background: rgba(255, 255, 255, 0.78);
         box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8) inset;
-        transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+        transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 260ms ease, border-color 260ms ease;
       }
 
       .sib-lp-card:hover {
         border-color: rgba(255, 122, 26, 0.22);
-        transform: translateY(-4px);
+        transform: translateY(-6px) scale(1.012);
         box-shadow: var(--sib-lp-shadow-soft), 0 0 0 1px rgba(255, 122, 26, 0.04);
       }
 
@@ -430,19 +494,50 @@
         letter-spacing: -0.04em;
       }
 
+      .sib-lp-price-stage {
+        position: relative;
+      }
+
+      .sib-lp-price-stage::before {
+        position: absolute;
+        top: -72px;
+        left: 50%;
+        width: min(84vw, 760px);
+        height: 240px;
+        border-radius: 999px;
+        content: "";
+        background: radial-gradient(circle, rgba(255, 140, 66, 0.12), transparent 70%);
+        filter: blur(18px);
+        transform: translateX(-50%);
+        pointer-events: none;
+      }
+
       .sib-lp-price-card {
+        position: relative;
         overflow: hidden;
-        max-width: 860px;
+        max-width: 900px;
         margin: 0 auto;
         padding: 0;
+        border-color: rgba(17, 17, 19, 0.18);
+        box-shadow: 0 30px 90px rgba(0, 0, 0, 0.13);
+      }
+
+      .sib-lp-price-card::before {
+        position: absolute;
+        inset: 0 0 auto;
+        height: 52%;
+        content: "";
+        background: radial-gradient(circle at 50% 0%, rgba(255, 140, 66, 0.18), transparent 62%);
+        pointer-events: none;
       }
 
       .sib-lp-price-card__top {
-        padding: 34px;
+        position: relative;
+        padding: 38px 34px 40px;
         color: var(--sib-lp-white);
         background:
-          radial-gradient(circle at 78% 0%, rgba(255, 122, 26, 0.26), transparent 20rem),
-          linear-gradient(145deg, #111113, #2c2c31);
+          radial-gradient(circle at 76% 0%, rgba(255, 140, 66, 0.24), transparent 22rem),
+          linear-gradient(145deg, #0f0f11, #29292e 72%, #171719);
       }
 
       .sib-lp-plan {
@@ -455,12 +550,32 @@
       }
 
       .sib-lp-price {
-        margin-bottom: 14px;
-        font-size: clamp(2.5rem, 12vw, 5.4rem);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.16em;
+        align-items: baseline;
+        margin-bottom: 18px;
+        font-size: clamp(2.8rem, 12vw, 6.3rem);
         font-weight: 850;
-        line-height: 1;
-        letter-spacing: -0.07em;
-        text-shadow: 0 0 34px rgba(255, 122, 26, 0.22);
+        line-height: 0.95;
+        letter-spacing: -0.075em;
+        text-shadow: 0 0 34px rgba(255, 122, 26, 0.2);
+      }
+
+      .sib-lp-price__tax {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: clamp(1rem, 3vw, 1.35rem);
+        font-weight: 800;
+        letter-spacing: 0.02em;
+      }
+
+      .sib-lp-price__amount {
+        color: var(--sib-lp-orange-warm);
+        background: linear-gradient(95deg, #ff8c42 0%, #ffb06a 42%, #fff0df 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        text-shadow: 0 0 42px rgba(255, 122, 26, 0.3);
+        -webkit-text-fill-color: transparent;
       }
 
       .sib-lp-price-card__body {
@@ -507,7 +622,7 @@
       }
 
       .sib-lp-step__num {
-        color: var(--sib-lp-muted);
+        color: var(--sib-lp-accent);
         font-weight: 800;
         letter-spacing: -0.04em;
       }
@@ -570,6 +685,75 @@
         background: rgba(255, 255, 255, 0.72);
       }
 
+      .sib-lp-showcase {
+        display: grid;
+        gap: 18px;
+      }
+
+      .sib-lp-photo-card {
+        position: relative;
+        overflow: hidden;
+        min-height: 360px;
+        border-radius: 34px;
+        background: #e9e9ed;
+        box-shadow: var(--sib-lp-shadow-soft);
+      }
+
+      .sib-lp-photo-card img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        min-height: 360px;
+        object-fit: cover;
+        transform: scale(1.035);
+        transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1), filter 900ms cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      .sib-lp-photo-card::after {
+        position: absolute;
+        inset: auto 0 0;
+        height: 46%;
+        content: "";
+        background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.42));
+        pointer-events: none;
+      }
+
+      .sib-lp-photo-card:hover img {
+        transform: scale(1.055);
+        filter: saturate(1.03);
+      }
+
+      .sib-lp-photo-card__text {
+        position: absolute;
+        right: 22px;
+        bottom: 20px;
+        left: 22px;
+        z-index: 1;
+        color: var(--sib-lp-white);
+      }
+
+      .sib-lp-photo-card__text h3 {
+        margin-bottom: 6px;
+        font-size: clamp(1.3rem, 4vw, 2.1rem);
+        line-height: 1.08;
+        letter-spacing: -0.05em;
+      }
+
+      .sib-lp-photo-card__text p {
+        max-width: 470px;
+        margin-bottom: 0;
+        color: rgba(255, 255, 255, 0.76);
+        font-size: 0.95rem;
+      }
+
+      .sib-lp-photo-card--wide {
+        min-height: 430px;
+      }
+
+      .sib-lp-photo-card--wide img {
+        min-height: 430px;
+      }
+
       .sib-lp-notes {
         max-width: 900px;
         margin: 0 auto;
@@ -618,15 +802,34 @@
 
       .sib-lp-reveal {
         opacity: 0;
-        transform: translateY(24px);
-        transition: opacity 760ms cubic-bezier(0.22, 1, 0.36, 1), transform 760ms cubic-bezier(0.22, 1, 0.36, 1);
+        transform: translate3d(0, 34px, 0) scale(0.985);
+        transition: opacity 900ms cubic-bezier(0.22, 1, 0.36, 1), transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
         transition-delay: var(--sib-lp-reveal-delay, 0ms);
         will-change: opacity, transform;
       }
 
       .sib-lp-reveal.is-sib-lp-visible {
         opacity: 1;
-        transform: translateY(0);
+        transform: translate3d(0, var(--sib-lp-depth-shift, 0px), 0) scale(1);
+      }
+
+      .sib-lp-price-card.sib-lp-reveal {
+        transform: translate3d(0, 42px, 0) scale(0.96);
+      }
+
+      .sib-lp-price-card.sib-lp-reveal.is-sib-lp-visible {
+        transform: translate3d(0, var(--sib-lp-depth-shift, 0px), 0) scale(1);
+      }
+
+      .sib-lp-card.sib-lp-reveal.is-sib-lp-visible:hover {
+        transform: translate3d(0, calc(var(--sib-lp-depth-shift, 0px) - 6px), 0) scale(1.012);
+      }
+
+      .sib-lp-button:focus-visible,
+      .sib-lp-footer a:focus-visible,
+      .sib-lp-nav a:focus-visible {
+        outline: 2px solid rgba(255, 122, 26, 0.72);
+        outline-offset: 4px;
       }
 
       @media (min-width: 700px) {
@@ -646,6 +849,14 @@
         .sib-lp-grid--two,
         .sib-lp-grid--three {
           grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .sib-lp-showcase {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .sib-lp-photo-card--wide {
+          grid-column: span 2;
         }
 
         .sib-lp-price-card__body {
@@ -676,7 +887,7 @@
         }
 
         .sib-lp-hero__screen {
-          min-height: 330px;
+          min-height: 430px;
           padding: 42px;
         }
 
@@ -692,6 +903,28 @@
         .sib-lp-footer__inner {
           grid-template-columns: 1fr auto;
           align-items: center;
+        }
+      }
+
+
+      @media (max-width: 699px) {
+        .sib-lp-hero-device {
+          position: relative;
+          right: auto;
+          bottom: auto;
+          width: 100%;
+          margin-top: 28px;
+        }
+
+        .sib-lp-hero__screen {
+          min-height: auto;
+        }
+
+        .sib-lp-photo-card,
+        .sib-lp-photo-card img,
+        .sib-lp-photo-card--wide,
+        .sib-lp-photo-card--wide img {
+          min-height: 320px;
         }
       }
 
@@ -715,7 +948,10 @@
         }
 
         .sib-lp-button:hover,
-        .sib-lp-card:hover {
+        .sib-lp-card:hover,
+        .sib-lp-card.sib-lp-reveal.is-sib-lp-visible:hover,
+        .sib-lp-photo-card:hover img,
+        .sib-lp-hero-device {
           transform: none;
         }
       }
@@ -753,6 +989,10 @@
                   <p class="sib-lp-copy">写真、強み、料金、導線。必要な情報を、静かに美しく整えます。</p>
                   <div class="sib-lp-screen-lines" aria-hidden="true"><i></i><i></i></div>
                 </div>
+                <figure class="sib-lp-hero-device" data-sib-lp-depth="0.08">
+                  <img src="assets/lp-workspace.svg" alt="ノートPCで制作中のWebページを確認するデスクの写真" loading="eager" />
+                  <figcaption class="sib-lp-hero-device__caption">Real content, refined for one page.</figcaption>
+                </figure>
               </div>
             </div>
           </div>
@@ -810,6 +1050,31 @@
         </div>
       </section>
 
+      <section class="sib-lp-section sib-lp-section--stage sib-lp-reveal" aria-labelledby="visual-title">
+        <div class="sib-lp-container">
+          <div class="sib-lp-section__header">
+            <p class="sib-lp-eyebrow">Visual Direction</p>
+            <h2 class="sib-lp-heading" id="visual-title">写真の余白まで、ブランドになる。</h2>
+            <p class="sib-lp-lead">実際の店舗、手元、打ち合わせの空気感を、大きな写真カードで静かに見せます。</p>
+          </div>
+          <div class="sib-lp-showcase" aria-label="LPに配置する写真表現の例">
+            <!-- 写真はSIBの実案件素材に差し替えやすいよう、各カードのimgだけを交換できる構造です。 -->
+            <article class="sib-lp-photo-card sib-lp-photo-card--wide sib-lp-reveal" data-sib-lp-depth="0.035">
+              <img src="assets/lp-workspace.svg" alt="ノートPCでランディングページを確認する作業デスク" loading="lazy" />
+              <div class="sib-lp-photo-card__text"><h3>Web制作の清潔感を、大きく。</h3><p>小さなサムネイルではなく、余白の中に1枚の写真を置いて信頼感をつくります。</p></div>
+            </article>
+            <article class="sib-lp-photo-card sib-lp-reveal" data-sib-lp-depth="0.055">
+              <img src="assets/lp-meeting.svg" alt="少人数で打ち合わせをしているビジネスシーン" loading="lazy" />
+              <div class="sib-lp-photo-card__text"><h3>相談の温度感まで。</h3><p>人の気配を控えめに入れ、サービスへの安心感につなげます。</p></div>
+            </article>
+            <article class="sib-lp-photo-card sib-lp-reveal" data-sib-lp-depth="0.045">
+              <img src="assets/lp-cafe.svg" alt="落ち着いたカフェ店舗の雰囲気" loading="lazy" />
+              <div class="sib-lp-photo-card__text"><h3>店舗の空気を伝える。</h3><p>カフェ、サロン、イベントなど、利用シーンを上質に見せます。</p></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
       <section class="sib-lp-section sib-lp-section--soft sib-lp-reveal" aria-labelledby="usp-title">
         <div class="sib-lp-container">
           <div class="sib-lp-section__header">
@@ -823,7 +1088,7 @@
         </div>
       </section>
 
-      <section class="sib-lp-section sib-lp-reveal" id="pricing" aria-labelledby="pricing-title">
+      <section class="sib-lp-section sib-lp-price-stage sib-lp-reveal" id="pricing" aria-labelledby="pricing-title">
         <div class="sib-lp-container">
           <div class="sib-lp-section__header">
             <h2 class="sib-lp-heading" id="pricing-title">まずは、小さく始められる価格で。</h2>
@@ -831,7 +1096,7 @@
           <article class="sib-lp-card sib-lp-price-card sib-lp-reveal">
             <div class="sib-lp-price-card__top">
               <p class="sib-lp-plan">One Page Plan</p>
-              <p class="sib-lp-price">税込55,000円</p>
+              <p class="sib-lp-price"><span class="sib-lp-price__tax">税込</span><span class="sib-lp-price__amount">55,000円</span></p>
               <p>最短3日で初稿制作可能。通常は修正期間を含めて10〜14日で納品します。</p>
             </div>
             <div class="sib-lp-price-card__body">
@@ -944,6 +1209,11 @@
       (() => {
         const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
         const revealItems = Array.from(document.querySelectorAll(".sib-lp-reveal"));
+        const depthItems = Array.from(document.querySelectorAll("[data-sib-lp-depth]"));
+
+        depthItems.forEach((item) => {
+          item.dataset.sibLpDepth = item.dataset.sibLpDepth || "0";
+        });
 
         revealItems.forEach((item, index) => {
           if (!item.style.getPropertyValue("--sib-lp-reveal-delay")) {
@@ -969,6 +1239,32 @@
         );
 
         revealItems.forEach((item) => observer.observe(item));
+
+        if (depthItems.length) {
+          let ticking = false;
+          const updateDepth = () => {
+            const viewportCenter = window.innerHeight / 2;
+            depthItems.forEach((item) => {
+              const rect = item.getBoundingClientRect();
+              const itemCenter = rect.top + rect.height / 2;
+              const offset = Math.max(-90, Math.min(90, viewportCenter - itemCenter));
+              const depth = Number.parseFloat(item.dataset.sibLpDepth) || 0;
+              item.style.setProperty("--sib-lp-depth-shift", `${(offset * depth).toFixed(2)}px`);
+            });
+            ticking = false;
+          };
+
+          const requestDepthUpdate = () => {
+            if (!ticking) {
+              window.requestAnimationFrame(updateDepth);
+              ticking = true;
+            }
+          };
+
+          updateDepth();
+          window.addEventListener("scroll", requestDepthUpdate, { passive: true });
+          window.addEventListener("resize", requestDepthUpdate);
+        }
       })();
     </script>
   </body>
