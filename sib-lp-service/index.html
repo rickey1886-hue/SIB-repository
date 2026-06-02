@@ -1137,6 +1137,7 @@
         const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
         const revealItems = Array.from(document.querySelectorAll(".sib-lp-reveal"));
         const depthItems = Array.from(document.querySelectorAll(".sib-lp-depth"));
+        const scheduleFrame = window.requestAnimationFrame || ((callback) => window.setTimeout(callback, 16));
 
         revealItems.forEach((item, index) => {
           if (!item.style.getPropertyValue("--sib-lp-reveal-delay")) {
@@ -1177,7 +1178,7 @@
 
         const requestDepthUpdate = () => {
           if (!ticking) {
-            window.requestAnimationFrame(updateDepth);
+            scheduleFrame(updateDepth);
             ticking = true;
           }
         };
