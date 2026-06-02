@@ -17,8 +17,11 @@
         --sib-lp-white: #ffffff;
         --sib-lp-line: rgba(17, 17, 19, 0.1);
         --sib-lp-line-strong: rgba(17, 17, 19, 0.16);
-        --sib-lp-accent: #0a84ff;
-        --sib-lp-accent-soft: rgba(10, 132, 255, 0.12);
+        --sib-lp-orange: #ff7a1a;
+        --sib-lp-orange-soft: rgba(255, 122, 26, 0.12);
+        --sib-lp-orange-mid: rgba(255, 122, 26, 0.28);
+        --sib-lp-accent: var(--sib-lp-orange);
+        --sib-lp-accent-soft: var(--sib-lp-orange-soft);
         --sib-lp-shadow: 0 24px 70px rgba(0, 0, 0, 0.08);
         --sib-lp-shadow-soft: 0 16px 44px rgba(0, 0, 0, 0.06);
         --sib-lp-radius: 28px;
@@ -49,7 +52,7 @@
         z-index: -2;
         content: "";
         background:
-          radial-gradient(circle at 50% 0%, rgba(10, 132, 255, 0.1), transparent 30rem),
+          radial-gradient(circle at 50% 0%, rgba(255, 122, 26, 0.075), transparent 30rem),
           linear-gradient(180deg, #ffffff 0%, #f7f7f8 42%, #ffffff 100%);
       }
 
@@ -250,7 +253,9 @@
       }
 
       .sib-lp-button--primary:hover {
+        border-color: rgba(255, 122, 26, 0.46);
         background: #252529;
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2), 0 0 0 5px var(--sib-lp-orange-soft);
       }
 
       .sib-lp-button--secondary {
@@ -259,8 +264,9 @@
       }
 
       .sib-lp-button--secondary:hover {
-        border-color: rgba(17, 17, 19, 0.28);
+        border-color: rgba(255, 122, 26, 0.32);
         background: var(--sib-lp-white);
+        box-shadow: 0 12px 30px rgba(255, 122, 26, 0.08);
       }
 
       .sib-lp-hero__visual {
@@ -280,7 +286,7 @@
         border: 1px solid var(--sib-lp-line);
         border-radius: 28px;
         background:
-          radial-gradient(circle at 20% 15%, rgba(10, 132, 255, 0.2), transparent 13rem),
+          radial-gradient(circle at 22% 16%, rgba(255, 122, 26, 0.16), transparent 13rem),
           linear-gradient(145deg, #fbfbfd 0%, #ececf0 100%);
         text-align: left;
       }
@@ -325,6 +331,7 @@
 
       .sib-lp-screen-lines i:nth-child(1) {
         width: 82%;
+        background: linear-gradient(90deg, rgba(255, 122, 26, 0.18), rgba(17, 17, 19, 0.1));
       }
 
       .sib-lp-screen-lines i:nth-child(2) {
@@ -353,9 +360,9 @@
       }
 
       .sib-lp-card:hover {
-        border-color: rgba(17, 17, 19, 0.18);
+        border-color: rgba(255, 122, 26, 0.22);
         transform: translateY(-4px);
-        box-shadow: var(--sib-lp-shadow-soft);
+        box-shadow: var(--sib-lp-shadow-soft), 0 0 0 1px rgba(255, 122, 26, 0.04);
       }
 
       .sib-lp-card h3 {
@@ -386,9 +393,11 @@
 
       .sib-lp-panel {
         padding: 34px;
-        border: 1px solid var(--sib-lp-line);
+        border: 1px solid rgba(255, 122, 26, 0.14);
         border-radius: 34px;
-        background: #111113;
+        background:
+          radial-gradient(circle at 82% 0%, rgba(255, 122, 26, 0.14), transparent 16rem),
+          #111113;
         color: var(--sib-lp-white);
         box-shadow: var(--sib-lp-shadow);
       }
@@ -406,9 +415,10 @@
 
       .sib-lp-chip {
         padding: 8px 12px;
-        border: 1px solid rgba(255, 255, 255, 0.18);
+        border: 1px solid rgba(255, 122, 26, 0.24);
         border-radius: 999px;
-        color: rgba(255, 255, 255, 0.78);
+        color: rgba(255, 255, 255, 0.82);
+        background: rgba(255, 122, 26, 0.045);
         font-size: 0.86rem;
       }
 
@@ -431,7 +441,7 @@
         padding: 34px;
         color: var(--sib-lp-white);
         background:
-          radial-gradient(circle at 80% 0%, rgba(10, 132, 255, 0.38), transparent 20rem),
+          radial-gradient(circle at 78% 0%, rgba(255, 122, 26, 0.26), transparent 20rem),
           linear-gradient(145deg, #111113, #2c2c31);
       }
 
@@ -450,6 +460,7 @@
         font-weight: 850;
         line-height: 1;
         letter-spacing: -0.07em;
+        text-shadow: 0 0 34px rgba(255, 122, 26, 0.22);
       }
 
       .sib-lp-price-card__body {
@@ -526,7 +537,7 @@
         margin-bottom: 16px;
         border-radius: 18px;
         background:
-          radial-gradient(circle at 20% 25%, rgba(10, 132, 255, 0.28), transparent 8rem),
+          radial-gradient(circle at 20% 25%, rgba(255, 122, 26, 0.2), transparent 8rem),
           linear-gradient(135deg, #ffffff, #dfe0e5);
       }
 
@@ -574,7 +585,7 @@
         border: 1px solid var(--sib-lp-line);
         border-radius: 38px;
         background:
-          radial-gradient(circle at 50% 0%, rgba(10, 132, 255, 0.12), transparent 24rem),
+          radial-gradient(circle at 50% 0%, rgba(255, 122, 26, 0.095), transparent 24rem),
           rgba(255, 255, 255, 0.84);
         box-shadow: var(--sib-lp-shadow-soft);
       }
